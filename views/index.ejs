@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+<div class="container">
+    <div class="mt-3 text-right">
+        <a href="/ticket/new" class="btn btn-success">Add New Ticket</a>
+    </div>
+
+    <div class="mt-3">
+        <h2>Tickets</h2>
+    </div>
+    <% tickets.forEach((ticket) => { %>
+        <div class="mt-3">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h4 class="card-title"><%= ticket.ticketNumber.substring(0, 12) %></h4>
+                        </div>
+                        <div class="col-sm-6 text-right">
+                            <h4>
+                                <% if(ticket.ticketStatus == 1) { %>
+                                    <span class="badge badge-pill badge-success">Open</span>
+                                <% } else { %>
+                                    <span class="badge badge-pill badge-danger">Closed</span>
+                                <% } %>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <%= ticket.title %>
+                </div>
+                <div class="card-footer">
+                    <a href="/ticket/<%= ticket.id %>" class="btn btn-success">Show Ticket Details</a>
+                </div>
+            </div>
+        </div>
+    <% }) %>
+</div>
+<%- include('partials/footer') %>
