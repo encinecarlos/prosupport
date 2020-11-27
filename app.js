@@ -73,4 +73,14 @@ app.get('/ticket/changestatus/:id', (req, res) => {
     });
 });
 
+app.get('/ticket/destroy/:id', (req, res) => {
+    let id = req.params.id;
+
+    Ticket.destroy({
+        where: {id: id}
+    }).then(() => {
+        res.redirect('/');
+    });
+});
+
 app.listen(8000, () => console.log('server running...'));

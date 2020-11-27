@@ -12,6 +12,16 @@
                     <%= ticket.ticketNumber %>
                 </p>
                 <p>
+                    <b>Priority: </b>
+                    <% if(ticket.ticketPriority == 0) { %>
+                        <span class="badge badge-pill badge-danger">High</span>
+                    <% } else if(ticket.ticketStatus == 1) { %>
+                        <span class="badge badge-pill badge-warning">Medium</span>
+                    <% } else { %>
+                        <span class="badge badge-pill badge-success">Low</span>
+                    <% } %>
+                </p>
+                <p>
                     <b>Status: </b>
                     <span class="badge badge-pill <%= ticket.ticketStatus == 1 ? 'badge-success' : 'badge-danger' %>">
                         <%= ticket.ticketStatus == 1 ? 'Open' : 'Closed' %>
